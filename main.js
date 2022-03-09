@@ -90,19 +90,36 @@ const petImages = [
   }
 ]
 
+
+
 //Render stats
-const renderStat = (type, value, petDiv) => {
+const renderStat = (type, value) => {
   const div = document.createElement("div");
+  div.classList.add("stats")
   const label = document.createElement("label");
-  label.innerText = `${type}: `;
+  label.innerText = type;
   label.for = `${type}Progress`;
   const progress = document.createElement("progress");
+  progress.classList.add("progressBar")
   progress.id = `${type}Progress`;
   progress.value = value;
   progress.max = 100;
   div.appendChild(label);
   div.appendChild(progress);
-  petDiv.appendChild(div);
+  //petDiv.appendChild(div);
+  return div;
+}
+//Get and append new stats
+const updateStats = (statsDiv, tiredness, hunger, loneliness, happiness, pet) => {
+    statsDiv.innerHTML ="";
+    tiredness = renderStat("tiredness", pet.tiredness);
+    hunger = renderStat("hunger", pet.hunger);
+    loneliness = renderStat("loneliness", pet.loneliness);
+    happiness = renderStat("happiness", pet.happiness);
+    statsDiv.appendChild(tiredness);
+    statsDiv.appendChild(hunger);
+    statsDiv.appendChild(loneliness);
+    statsDiv.appendChild(happiness);
 }
 
 /*const renderButton = (method, text, buttonDiv, pet) => {
@@ -116,20 +133,24 @@ const renderStat = (type, value, petDiv) => {
 };*/
 
 
+
+
 //Render Pet
-const renderPet = (pet) => {
+const renderPet = (pet, myPetDiv) => {
   //Create elements
-  const myPetDiv = document.createElement("div");
+  //const myPetDiv = document.createElement("div");
+  //myPetDiv.classList.add("indivdualPetDiv");
 
-  const buttonDiv = document.createElement("button");
+  const buttonDiv = document.createElement("div");
   buttonDiv.innerHTML = "";
+  buttonDiv.classList.add("buttonDiv");
 
-  const name = document.createElement("p");
-  name.innerText = pet.name;
+  const name = document.createElement("h2");
+  name.innerText = pet.name.toUpperCase();
   myPetDiv.appendChild(name);
 
   const type = document.createElement("p");
-  type.innerText = `Type: ${pet.animalType}`;
+  type.innerText = pet.animalType;
   myPetDiv.appendChild(type);
 
   //Render image
@@ -141,14 +162,20 @@ const renderPet = (pet) => {
     }
   })
   img.src = imgUrl;
-  img.style.width = "100px"
   myPetDiv.appendChild(img);
 
   //Render stats
-  renderStat("tiredness", pet.tiredness, myPetDiv);
-  renderStat("hunger", pet.hunger, myPetDiv);
-  renderStat("loneliness", pet.loneliness, myPetDiv);
-  renderStat("happiness", pet.happiness, myPetDiv);
+  let tiredness = renderStat("tiredness", pet.tiredness);
+  let hunger = renderStat("hunger", pet.hunger);
+  let loneliness = renderStat("loneliness", pet.loneliness);
+  let happiness = renderStat("happiness", pet.happiness);
+  let statsDiv = document.createElement("div");
+  statsDiv.appendChild(tiredness);
+  statsDiv.appendChild(hunger);
+  statsDiv.appendChild(loneliness);
+  statsDiv.appendChild(happiness);
+  myPetDiv.appendChild(statsDiv);
+  
 
   //Render buttons
 
@@ -157,38 +184,36 @@ const renderPet = (pet) => {
   renderButton(pet.eat, "Feed", buttonDiv, pet);*/
 
   const napButton = document.createElement("button");
-  napButton.innerText = "Nap";
+  napButton.innerHTML = `<i class="fa-solid fa-moon"></i>`;
   napButton.addEventListener("click", () => {
     pet.nap();
-    myPetDiv.innerHTML = "";
-    renderPet(pet)
+    updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
     console.log(`You put ${pet.name} to bed`)
   })
   buttonDiv.appendChild(napButton);
 
   const playButton = document.createElement("button");
-  playButton.innerText = "Play";
+  playButton.innerHTML = `<i class="fa-solid fa-football"></i>`;
   playButton.addEventListener("click", () => {
     pet.play();
-    myPetDiv.innerHTML = "";
-    renderPet(pet)
+    updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
     console.log(`You played with ${pet.name}`)
   })
   buttonDiv.appendChild(playButton);
 
   const feedButton = document.createElement("button");
-  feedButton.innerText = "Feed";
+  feedButton.innerHTML = `<i class="fa-solid fa-utensils"></i>`;
   feedButton.addEventListener("click", () => {
     pet.eat();
-    myPetDiv.innerHTML = "";
-    renderPet(pet)
+    updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
     console.log(`You fed ${pet.name}`)
   })
   buttonDiv.appendChild(feedButton);
 
   //Kill
   const killButton = document.createElement("button");
-  killButton.innerText = "KILL!!!!!"
+  killButton.innerText = "MURDER"
+  killButton.classList.add("killButton");
   killButton.addEventListener("click", () => {
     myPetDiv.remove();
     console.log(`${pet.name} is screaming in agony!`)
@@ -197,8 +222,12 @@ const renderPet = (pet) => {
   //Append
   myPetDiv.appendChild(buttonDiv);
   myPetDiv.appendChild(killButton);
-  petDiv.appendChild(myPetDiv);
+  //petDiv.appendChild(myPetDiv);
+
+  return myPetDiv;
 }
+
+
 
 //Submit
 document.querySelector("#createPet").addEventListener("submit", (e) => {
@@ -208,7 +237,11 @@ document.querySelector("#createPet").addEventListener("submit", (e) => {
 
   //Create and render pet
   const myPet = new Pet (nameInput, typeInput, 50, 50, 50, 50);
-  renderPet(myPet);
+
+  const individualPetDiv = document.createElement("div");
+  individualPetDiv.classList.add("indivdualPetDiv")
+  const individualPet = renderPet(myPet, individualPetDiv);
+  petDiv.appendChild(individualPet);
 
   e.preventDefault();
 })

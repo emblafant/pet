@@ -1,0 +1,13 @@
+//media queries
+
+@mixin for-tablet {
+  @media (min-width:601px){
+    @content;
+  }
+}
+
+@mixin for-small-screen {
+  @media (min-width:1024px){
+    @content;
+  }
+}

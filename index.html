@@ -4,25 +4,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <script src="https://kit.fontawesome.com/7982d21e85.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=DotGothic16&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <title>My Tamagotchis</title>
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-  <form id="createPet">
-    <label for="nameInput">Name:</label>
-    <input type="text" name="nameInput" id="nameInput" required>
-    <label for="typeInput">Type:</label>
-    <select name="typeInput" id="typeInput">
-      <option value="mametchi">Mametchi</option>
-      <option value="kutchipatchi">Kutchipatchi</option>
-      <option value="memetchi">Memetchi</option>
-      <option value="itchigotchi">Ichigotchi</option>
-      <option value="mimitchi">Mimitchi</option>
-    </select>
-    <button type="submit" id="submitBtn">Adopt!</button>
-  </form>
-  <div id="pet">
-
-  </div>
+  <main>
+    <h1>MY TAMAGOTCHIS</h1>
+    <form id="createPet">
+      <label for="nameInput">name</label>
+      <input type="text" name="nameInput" id="nameInput" required>
+      <label for="typeInput">type</label>
+      <select name="typeInput" id="typeInput">
+        <option value="mametchi">mametchi</option>
+        <option value="kutchipatchi">kutchipatchi</option>
+        <option value="memetchi">memetchi</option>
+        <option value="itchigotchi">ichigotchi</option>
+        <option value="mimitchi">mimitchi</option>
+      </select>
+      <button type="submit" id="submitBtn">adopt</button>
+    </form>
+    <div id="pet" class="petContainer">
+    </div>
+  </main>
   <script src="main.js"></script>
 </body>
 </html>
