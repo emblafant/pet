@@ -1,5 +1,6 @@
 //Variables
 const petDiv = document.querySelector("#pet");
+const messageBubble = document.querySelector("#messageBubble");
 
 //Check max min value
 const maxMinValue = (value) => {
@@ -133,14 +134,18 @@ const updateStats = (statsDiv, tiredness, hunger, loneliness, happiness, pet) =>
 };*/
 
 
+//Update message
+const updateMessage = (message) => {
+  console.log(message)
+    messageBubble.classList.remove("hidden");
+    messageBubble.innerText = message;
+}
+
 
 
 //Render Pet
 const renderPet = (pet, myPetDiv) => {
   //Create elements
-  //const myPetDiv = document.createElement("div");
-  //myPetDiv.classList.add("indivdualPetDiv");
-
   const buttonDiv = document.createElement("div");
   buttonDiv.innerHTML = "";
   buttonDiv.classList.add("buttonDiv");
@@ -188,7 +193,7 @@ const renderPet = (pet, myPetDiv) => {
   napButton.addEventListener("click", () => {
     pet.nap();
     updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
-    console.log(`You put ${pet.name} to bed`)
+    updateMessage(`${pet.name} cried themselves to sleep`);
   })
   buttonDiv.appendChild(napButton);
 
@@ -197,7 +202,7 @@ const renderPet = (pet, myPetDiv) => {
   playButton.addEventListener("click", () => {
     pet.play();
     updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
-    console.log(`You played with ${pet.name}`)
+    updateMessage(`for once, ${pet.name} actually feels loved since you constantly neglect them`);
   })
   buttonDiv.appendChild(playButton);
 
@@ -206,7 +211,7 @@ const renderPet = (pet, myPetDiv) => {
   feedButton.addEventListener("click", () => {
     pet.eat();
     updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
-    console.log(`You fed ${pet.name}`)
+    updateMessage(`${pet.name} is no longer starving`);
   })
   buttonDiv.appendChild(feedButton);
 
@@ -217,6 +222,7 @@ const renderPet = (pet, myPetDiv) => {
   killButton.addEventListener("click", () => {
     myPetDiv.remove();
     console.log(`${pet.name} is screaming in agony!`)
+    messageBubble.innerText = `${pet.name} is screaming in agony`;
   });
 
   //Append
@@ -242,6 +248,9 @@ document.querySelector("#createPet").addEventListener("submit", (e) => {
   individualPetDiv.classList.add("indivdualPetDiv")
   const individualPet = renderPet(myPet, individualPetDiv);
   petDiv.appendChild(individualPet);
+
+  //Adoption message
+  updateMessage(`congratulations! you've adopted the ${typeInput} ${nameInput}!`);
 
   e.preventDefault();
 })

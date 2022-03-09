@@ -17,6 +17,16 @@ body {
 }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #f8ebe1;
   min-height: 100vh;
   width: 100vw;
@@ -110,6 +120,37 @@ input[type=text] {
   text-indent: 10%;
   width: 200px;
   font-size: 15px;
+}
+
+.message-bubble {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 3px solid #193f6a;
+  border-radius: 4px;
+  width: 190px;
+  padding: 10px 5px;
+  margin: 10px 0 30px 0;
+}
+
+@media (min-width: 601px) {
+  .message-bubble {
+    width: 290px;
+    padding: 20px 5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .message-bubble {
+    width: 390px;
+  }
 }
 
 @media (min-width: 1024px) {
