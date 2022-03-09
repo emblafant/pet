@@ -1,0 +1,218 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  background-color: #f2aea3;
+  color: #193f6a;
+  text-align: center;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+main {
+  background-color: #f8ebe1;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+@media (min-width: 601px) {
+  main {
+    width: 500px;
+    margin: 50px 0;
+    min-height: auto;
+    border-radius: 10px;
+    border: 3px solid #193f6a;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    width: 900px;
+  }
+}
+
+h1 {
+  font-family: 'Gloria Hallelujah', cursive;
+  margin: 20px 0 10px 0;
+  font-size: 28px;
+}
+
+h2 {
+  font-family: 'Gloria Hallelujah', cursive;
+  margin: 20px 0 0 0;
+  font-size: 25px;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background-color: #f2aea3;
+  border: 3px solid #193f6a;
+  border-radius: 4px;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.fa-solid {
+  color: #193f6a;
+}
+
+#createPet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#createPet label {
+  font-size: 20px;
+}
+
+#createPet button {
+  margin: 15px 0 25px 0;
+  font-size: 20px;
+  width: 160px;
+  color: #193f6a;
+}
+
+input[type=text] {
+  background-color: #f8ebe1;
+  border: 3px solid #193f6a;
+  border-radius: 4px;
+  color: #193f6a;
+  font-family: 'DotGothic16', sans-serif;
+  width: 200px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#typeInput {
+  background-color: #f8ebe1;
+  border: 3px solid #193f6a;
+  border-radius: 4px;
+  color: #193f6a;
+  font-family: 'DotGothic16', sans-serif;
+  text-align: center;
+  text-indent: 10%;
+  width: 200px;
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  .petContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    width: 790px;
+    margin: 0 55px;
+  }
+}
+
+.indivdualPetDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.indivdualPetDiv p {
+  font-size: 20px;
+}
+
+.indivdualPetDiv img {
+  height: 200px;
+  margin: 20px 0;
+}
+
+.buttonDiv {
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 10px 0;
+}
+
+.buttonDiv button {
+  width: 60px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.killButton {
+  width: 160px;
+  font-family: 'Creepster', cursive;
+  font-size: 25px;
+  color: #193f6a;
+  margin: 0 0 30px 0;
+}
+
+.stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stats label {
+  font-size: 20px;
+}
+
+progress {
+  border-radius: 15px;
+  width: 200px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #f8ebe1;
+  border: 3px solid #193f6a;
+  border-radius: 15px;
+}
+
+progress::-webkit-progress-value {
+  background: #f2aea3;
+  background-color: #f2aea3;
+  border-radius: 15px;
+}
+
+.hidden {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */
