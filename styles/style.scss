@@ -17,6 +17,10 @@ body {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: $white;
   min-height: 100vh;
   width: 100vw;
@@ -97,6 +101,28 @@ input[type=text] {
   text-indent: 10%;
   width: 200px;
   font-size: 15px;
+}
+
+//Message bubble
+
+.message-bubble {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  border: 3px solid $dark-blue;
+  border-radius: 4px;
+  width: 190px;
+  padding: 10px 5px;
+  margin: 10px 0 30px 0;
+  
+  @include for-tablet {
+    width: 290px;
+    padding: 20px 5px;
+  }
+  @include for-small-screen {
+    width: 390px;
+  }
 }
 
 //Pets
