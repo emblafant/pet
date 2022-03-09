@@ -52,8 +52,6 @@ class Pet {
       this.loneliness = maxMinValue(this.loneliness);
 
       return this;
-    } else {
-      console.log(`${this.name} is too tired to do this!`)
     }
   }
   eat() {
@@ -201,9 +199,13 @@ const renderPet = (pet, myPetDiv) => {
   playButton.innerHTML = `<i class="fa-solid fa-football"></i>`;
   playButton.addEventListener("click", () => {
     pet.play();
-    updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
-    updateMessage(`for once, ${pet.name} actually feels loved since you constantly neglect them`);
-  })
+    if (pet.tiredness < 70) {
+      updateStats(statsDiv, tiredness, hunger, loneliness, happiness, pet);
+      updateMessage(`for once, ${pet.name} actually feels loved since you constantly neglect them`);
+    } else {
+      updateMessage(`${this.name}  are too exhausted to do this, back off!`)
+    }
+   })
   buttonDiv.appendChild(playButton);
 
   const feedButton = document.createElement("button");
