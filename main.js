@@ -238,8 +238,13 @@ const renderPet = (pet, myPetDiv) => {
 //Submit
 document.querySelector("#createPet").addEventListener("submit", (e) => {
   //Get values
-  const nameInput = document.querySelector("#nameInput").value;
+  const nameInput = document.querySelector("#nameInput").value.toLowerCase();
   const typeInput = document.querySelector("#typeInput").value;
+
+  //Clear input
+  document.querySelector("#nameInput").value = "";
+  document.querySelector("#typeInput").value = "mametchi";
+
 
   //Create and render pet
   const myPet = new Pet (nameInput, typeInput, 50, 50, 50, 50);
